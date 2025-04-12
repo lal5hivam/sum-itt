@@ -1,0 +1,15 @@
+# Node
+node_modules/
+.env
+api.env
+uploads/
+*.log
+
+# React build
+sum-itt-client/build/
+sum-itt-client/.next/
+sum-itt-client/.cache/
+
+# VSCode and system files
+.DS_Store
+.vscode/
