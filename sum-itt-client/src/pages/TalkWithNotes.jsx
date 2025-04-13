@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import AskSumittChat from "../components/AskSumittChat";
 import GetBulletPoints from "../components/GetBulletPoints";
+import GlossaryBuilder from "../components/GlossaryBuilder";
+
 
 
 // import GetBulletPoints from "../components/GetBulletPoints"; // ⏳ coming next
@@ -75,12 +77,22 @@ const TalkWithNotes = () => {
             >
               📝 Get Bullet Points
             </button>
+            <button
+              onClick={() => setSelectedOption("glossary")}
+              className={`p-4 rounded-xl ${
+              selectedOption === "glossary" ? "bg-yellow-700" : "bg-yellow-600 hover:bg-yellow-700"
+              }`}
+            >
+              📘 Glossary Builder
+          </button>
             
           </div>
 
           <div className="mt-6">
             {selectedOption === "ask" && <AskSumittChat />}
             {selectedOption === "bullets" && <GetBulletPoints />}
+            {selectedOption === "glossary" && <GlossaryBuilder />}
+
           </div>
         </>
       )}

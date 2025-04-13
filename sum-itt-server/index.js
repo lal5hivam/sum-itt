@@ -342,3 +342,40 @@ ${notesMemory.slice(0, 6000)}
     res.status(500).json({ error: "Failed to generate bullet summary." });
   }
 });
+
+app.post("/generate-glossary", async (req, res) => {
+  if (!notesMemory) {
+    return res.status(400).json({ error: "Please upload a PDF first." });
+  }
+
+  const prompt = `
+From the following class notes, extract a glossary of important terms and their definitions.
+Only include unique and relevant concepts. Format as a list with each term followed by a colon and its meaning.
+
+Notes:
+${notesMemory.slice(0, 6000)}
+`;
+
+  try {
+    const response = await axios.post(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
+        model: "llama3-8b-8192",
+        messages: [
+          { role: "user", content: prompt }
+        ],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+        },
+      }
+    );
+
+    const glossaryText = response.data.choices[0].message.content;
+    res.json({ glossary: glossaryText });
+  } catch (err) {
+    console.error("❌ Glossary Error:", err.response?.data || err.message);
+    res.status(500).json({ error: "Failed to generate glossary." });
+  }
+});
