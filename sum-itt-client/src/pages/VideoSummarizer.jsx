@@ -12,7 +12,7 @@ const VideoSummarizer = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/summarize-video", { url });
+      const res = await axios.post("https://sum-itt.onrender.com/summarize-video", { url });
       setEssay(res.data.essay);
       setBullets(res.data.bullets);
     } catch (err) {

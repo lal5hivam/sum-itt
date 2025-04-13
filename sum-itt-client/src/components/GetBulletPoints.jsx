@@ -12,7 +12,7 @@ const GetBulletPoints = () => {
     setBullets("");
 
     try {
-      const res = await axios.post("http://localhost:5000/get-bullets-from-notes");
+      const res = await axios.post("https://sum-itt.onrender.com/get-bullets-from-notes");
       setBullets(res.data.bullets);
     } catch (err) {
       setError("❌ Failed to get summary.");

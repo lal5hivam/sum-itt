@@ -15,7 +15,7 @@ const Summarizer = () => {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/summarize", {
+      const res = await fetch("https://sum-itt.onrender.com/summarize", {
         method: "POST",
         body: formData,
       });

@@ -16,7 +16,7 @@ const ExpenseTracker = () => {
     formData.append("file", file);
 
     try {
-        const response = await axios.post("http://localhost:5000/expense-summary", formData, {
+        const response = await axios.post("https://sum-itt.onrender.com/expense-summary", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

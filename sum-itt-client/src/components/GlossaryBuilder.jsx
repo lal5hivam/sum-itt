@@ -12,7 +12,7 @@ const GlossaryBuilder = () => {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:5000/generate-glossary");
+      const res = await axios.post("https://sum-itt.onrender.com/generate-glossary");
       setGlossary(res.data.glossary);
     } catch (err) {
       setError("❌ Failed to generate glossary.");

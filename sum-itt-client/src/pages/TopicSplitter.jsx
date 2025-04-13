@@ -13,7 +13,7 @@ const TopicSplitter = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/split-topics", formData, {
+      const res = await axios.post("https://sum-itt.onrender.com/split-topics", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setOutput(res.data.result);
