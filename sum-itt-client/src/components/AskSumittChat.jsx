@@ -15,7 +15,7 @@ const AskSumittChat = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("https://sum-itt.onrender.com/chat-with-notes", {
+      const res = await axios.post("${process.env.REACT_APP_API_URL}/chat-with-notes", {
         messages: newMessages,
       });
 

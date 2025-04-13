@@ -27,7 +27,7 @@ const TalkWithNotes = () => {
     setLoading(true);
 
     try {
-      await axios.post("https://sum-itt.onrender.com/upload-notes", formData, {
+      await axios.post("${process.env.REACT_APP_API_URL}/upload-notes", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setPdfUploaded(true);

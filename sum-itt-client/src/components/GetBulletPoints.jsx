@@ -12,7 +12,7 @@ const GetBulletPoints = () => {
     setBullets("");
 
     try {
-      const res = await axios.post("https://sum-itt.onrender.com/get-bullets-from-notes");
+      const res = await axios.post("${process.env.REACT_APP_API_URL}/get-bullets-from-notes");
       setBullets(res.data.bullets);
     } catch (err) {
       setError("❌ Failed to get summary.");
