@@ -15,7 +15,7 @@ const Summarizer = () => {
 
     setLoading(true);
     try {
-      const res = await fetch("${process.env.REACT_APP_API_URL}/summarize", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/summarize`, {
         method: "POST",
         body: formData,
       });

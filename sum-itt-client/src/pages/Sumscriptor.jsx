@@ -14,7 +14,7 @@ const Sumscriptor = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("${process.env.REACT_APP_API_URL}/sumscriptor", formData, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/sumscriptor`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         }

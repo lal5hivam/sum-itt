@@ -8,6 +8,7 @@ const ExpenseTracker = () => {
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
+  console.log(process.env.REACT_APP_API_URL);
 
   const handleUpload = async () => {
     if (!file) return alert("Please select a file first.");
@@ -16,7 +17,7 @@ const ExpenseTracker = () => {
     formData.append("file", file);
 
     try {
-        const response = await axios.post("${process.env.REACT_APP_API_URL}/expense-summary", formData, {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/expense-summary`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

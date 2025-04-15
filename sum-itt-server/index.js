@@ -133,7 +133,7 @@ app.post('/sumscriptor', upload.single('file'), async (req, res) => {
       {
         headers: {
           Authorization: `Token ${process.env.DEEPGRAM_API_KEY}`,
-          'Content-Type': req.mimetype,
+          'Content-Type': file.mimetype,
         }
       }
     );

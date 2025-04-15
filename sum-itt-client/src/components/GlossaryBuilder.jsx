@@ -12,7 +12,7 @@ const GlossaryBuilder = () => {
     setError("");
 
     try {
-      const res = await axios.post("${process.env.REACT_APP_API_URL}/generate-glossary");
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/generate-glossary`);
       setGlossary(res.data.glossary);
     } catch (err) {
       setError("❌ Failed to generate glossary.");

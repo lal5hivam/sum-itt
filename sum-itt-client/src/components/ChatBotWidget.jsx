@@ -15,7 +15,7 @@ const ChatBotWidget = () => {
     setInput("");
 
     try {
-      const res = await axios.post("${process.env.REACT_APP_API_URL}/chat", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/chat`, {
         messages: updatedMessages,
       });
 
