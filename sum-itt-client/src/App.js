@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ChatBotWidget from "./components/ChatBotWidget";
 import TalkWithNotes from './pages/TalkWithNotes';
+import FlashcardGenerator from './pages/FlashcardGenerator';
 
 
 import { motion } from "framer-motion";
