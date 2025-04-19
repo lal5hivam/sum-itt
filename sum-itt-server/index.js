@@ -379,3 +379,45 @@ ${notesMemory.slice(0, 6000)}
     res.status(500).json({ error: "Failed to generate glossary." });
   }
 });
+app.post("/generate-flashcards", upload.single("file"), async (req, res) => {
+  const file = req.file;
+  if (!file) return res.status(400).json({ error: "No file uploaded" });
+
+  try {
+    const filePath = path.join(__dirname, file.path);
+    const content = file.mimetype === "application/pdf"
+      ? (await pdfParse(fs.readFileSync(filePath))).text
+      : fs.readFileSync(filePath, "utf-8");
+
+    fs.unlinkSync(filePath); // Clean up
+
+    const prompt = `
+From the following class notes, generate 10 flashcards. Each should be a question and a short answer.
+
+Format:
+Q: ...
+A: ...
+
+Notes:
+${content.slice(0, 6000)}
+`;
+
+    const response = await axios.post(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
+        model: "llama3-8b-8192",
+        messages: [{ role: "user", content: prompt }],
+      },
+      {
+        headers: { Authorization: `Bearer ${process.env.GROQ_API_KEY}` },
+      }
+    );
+
+    const flashcards = response.data.choices[0].message.content;
+    res.json({ flashcards });
+
+  } catch (err) {
+    console.error("❌ Flashcard Error:", err.response?.data || err.message);
+    res.status(500).json({ error: "Failed to generate flashcards." });
+  }
+});

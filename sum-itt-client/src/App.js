@@ -39,6 +39,11 @@ const App = () => {
       title: "Talk-with-Notes",
       content: <TalkWithNotes />,
     },
+    {
+      icon: "🧠",
+      title: "Flashcard Generator",
+      content: <FlashcardGenerator />,
+    },    
   ];
 <main className="min-h-screen py-16 px-4 bg-gray-950 flex justify-center">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-5xl justify-items-center">
